@@ -1,0 +1,21 @@
+{
+    "name": "floriankapaun/klanglabor",
+    "description": "Kirby Plainkit",
+    "type": "website",
+    "keywords": ["klanglabor", "hs", "augsburg", "hochschule", "university of applied sciences"],
+    "homepage": "https://klanglabor.hs-augsburg.de",
+    "authors": [
+        {
+            "name": "Florian Kapaun",
+            "email": "hello@florian-kapaun.de",
+            "homepage": "https://florian-kapaun.de"
+        }
+    ],
+    "require": {
+        "php": ">=7.1.0",
+        "getkirby/cms": "^3.0"
+    },
+    "config": {
+        "optimize-autoloader": true
+    }
+}
