@@ -2,7 +2,7 @@
 
 <main>
     <h1><?= $page->title()->html() ?></h1>
-    <?= $page->text()->kirbytext() ?>
+    <?php snippet('layouts', ['field' => $page->layout()])  ?>
 </main>
 
 <?php snippet('footer') ?>

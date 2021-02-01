@@ -1,1 +1,5 @@
-Title: Site Title
+Title: Klanglabor
+
+----
+
+Author: Robert Rose
