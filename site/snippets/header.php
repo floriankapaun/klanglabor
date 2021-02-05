@@ -8,8 +8,6 @@
     <title><?= $page->title()->html() ?> | <?= $site->title()->html() ?></title>
     <!-- Global CSS -->
     <?= css('assets/css/site.css') ?>
-    <!-- Template specific CSS -->
-    <?= css('@auto') ?>
 </head>
 <body>
     <header>

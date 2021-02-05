@@ -1,6 +1,4 @@
     <footer>
-        <p>© 2021 <?= $site->author()->htmL() ?></p>
-
         <!-- Config variables -->
         <script type="text/javascript">
             const CONFIG = {
@@ -14,10 +12,9 @@
                 lineWidth: <?= $lineWidth ?>,
             };
         </script>
-
         <!-- Global JavaScript -->
         <?= js('assets/js/menu.js') ?>
-        <?= js('assets/js/site.js') ?>
+        <?= js('assets/js/bg.js') ?>
     </footer>
 </body>
 </html>

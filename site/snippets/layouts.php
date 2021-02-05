@@ -1,9 +1,9 @@
 <?php foreach ($field->toLayouts() as $layout): ?>
-    <section id="<?= $layout->id() ?>" class="row">
+    <article id="<?= $layout->id() ?>" class="row">
         <?php foreach ($layout->columns() as $column): ?>
-            <div class="column column-<?= str_replace('/', '-', $column->width()) ?>" style="--columns: <?= $column->span() ?>">
+            <section class="column column-<?= str_replace('/', '-', $column->width()) ?>" style="--columns: <?= $column->span() ?>">
                 <?php e($column->blocks()->isEmpty(), '<div class="spacing"></div>', $column->blocks()) ?>
-            </div>
+            </section>
         <?php endforeach ?>
-    </section>
+    </article>
 <?php endforeach ?>
