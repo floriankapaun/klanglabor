@@ -8,14 +8,14 @@ function getRandom($min = 0, $max = 1, $mul = 1) {
 }
 
 function getLinkHTML($item, $hasPopup) {
-    return '<a ' . ($item->isOpen() ? 'aria-current' : null) . ($hasPopup ? 'aria-expanded="false"' : null) . ' href="' . $item->url() . '" class="nav-link">' . $item->title()->html() . '</a>';
+    return '<a ' . ($item->isOpen() ? 'aria-current' : null) . ($hasPopup ? 'aria-expanded="false"' : null) . ' href="' . $item->url() . '" class=" block block-xl nav-link">' . $item->title()->html() . '</a>';
 }
 
 function getNavHTML($item) {
     $nav = '<ul class="nav-section">';
     foreach($item->children->listed() as $child) {
         $hasPopup = sizeof($child->children()->listed()) > 0;
-        $nav .= '<li class="nav-item block block-xl">' . getLinkHTML($child, $hasPopup);
+        $nav .= '<li class="nav-item">' . getLinkHTML($child, $hasPopup);
         if ($hasPopup) {
             $res = getNavHTML($child);
             $nav .= $res;

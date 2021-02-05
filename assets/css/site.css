@@ -40,6 +40,12 @@
     --border_width: 2px;
 }
 
+*:focus {
+    outline-style: dashed;
+    outline-color: var(--ink);
+    outline-width: var(--border_width);
+}
+
 body {
     position: relative;
     font-family: var(--font_family);
@@ -135,9 +141,12 @@ p + p { /* Paragraph spacing */
     display: inline-block;
     color: var(--ink);
     background-color: var(--paper);
-    margin: 1px;
     padding: 0 0.5rem;
-    outline: var(--border_width) solid var(--ink);
+    border: var(--border_width) solid var(--ink);
+}
+
+.block:focus {
+    outline-offset: -5px;
 }
 
 .block.active {

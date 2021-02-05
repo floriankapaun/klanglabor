@@ -1,10 +1,6 @@
     <footer>
-        <section class="block">
-            <a href="/impressum">Impressum</a>
-        </section>
-        <section class="block">
-            <a href="https://www.hs-augsburg.de/Service/Datenschutz.html" target="_blank" rel="noreferrer">Datenschutz</a>
-        </section>
+        <a class="block" href="/impressum">Impressum</a>
+        <a class="block" href="https://www.hs-augsburg.de/Service/Datenschutz.html" target="_blank" rel="noreferrer">Datenschutz</a>
         <!-- Config variables -->
         <script type="text/javascript">
             const CONFIG = {
