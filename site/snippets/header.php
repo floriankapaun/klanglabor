@@ -13,16 +13,25 @@
 </head>
 <body>
     <header>
-        <div>
-            <a id="logo" href="<?= $site->url() ?>">
+        <section>
+            <a id="logo" class="block block-xl" href="<?= $site->url() ?>">
                 <?= $site->title()->html() ?>
             </a>
-        </div>
-        <nav>
-            <?php foreach ($site->children()->listed() as $item): ?>
-                <a <?php e($item->isOpen(), 'aria-current') ?> href="<?= $item->url() ?>">
-                    <?= $item->title()->html() ?>
-                </a>
-            <?php endforeach ?>
+        </section>
+
+        <section>
+            <p class="block block-xl">Suchbegriff eingeben...</p>
+        </section>
+
+        <button aria-expanded="false" aria-label="Main Navigation Toggle" id="mainNavToggle" class="block block-xl">
+            Menü
+            <!--
+            <span class="sr-only">öffnen</span>
+            <span class="sr-only hidden">schließen</span>
+            -->
+        </button>
+
+        <nav aria-label="Main Navigation List" role="navigation" id="mainNav">
+            <?= $navHTML ?>
         </nav>
     </header>

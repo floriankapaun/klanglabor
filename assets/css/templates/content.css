@@ -1,6 +1,5 @@
 
 body {
-    max-width: 70rem;
     margin: 0 auto;
 }
 
@@ -42,6 +41,8 @@ p + p {
     border-right: 2px solid #000;
     border-bottom: 2px solid #000;
     min-width: 220px;
+    background-color: #fff;
+    color: #000;
 }
 
 @media (min-width: 700px) {

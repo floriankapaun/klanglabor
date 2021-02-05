@@ -6,10 +6,111 @@
 
 :root {
     font-size: 105%;
+
+    --ink: #000;
+    --paper: #fff;
+    --highlight: orange;
+
+    --font_size-m: 1rem;
+    --font_size-xl: 2rem;
+
+    --font_weight-m: 400;
+    --font_weight-xl: 700;
+
+    --line_height-m: 1.5;
+    --line_height-xl: 1.35;
 }
 
 body {
     font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
-    font-size: 1rem;
-    line-height: 1.5;
+    font-size: var(--font_size-m);
+    font-weight: var(--font_weight-m);
+    line-height: var(--line_height-m);
+}
+
+button {
+    font-family: inherit;
+    border: none;
+}
+
+canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+}
+
+
+/**
+ * NAVIGATION
+ */
+#mainNav {
+    --depth: 3;
+    position: relative;
+}
+
+.nav-section {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    width: 100vw; /* to ensure stretching */
+    max-width: calc(100vw / var(--depth));
+    list-style: none;
+}
+
+.nav-section.expanded {
+    display: flex;
+ }
+
+.nav-section .nav-section {
+    position: absolute;
+    top: 100%;
+    left: 1rem;
+    z-index: 10;
+}
+
+.nav-item {
+    position: relative;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+@media (min-width: 700px) {
+    .nav-section .nav-section {
+        top: -1px;
+        left: 100%;
+    }
+}
+
+
+/**
+ * UTILITY
+ */
+.block {
+    display: inline-block;
+    color: var(--ink);
+    background-color: var(--paper);
+    margin: 1px;
+    padding: 0 0.5rem;
+    outline: 2px solid var(--ink);
+}
+
+.block.active {
+    color: var(--paper);
+    background-color: var(--highlight);
+}
+
+.block-xl {
+    font-size: var(--font_size-xl);
+    font-weight: var(--font_weight-xl);
+    line-height: var(--line_height-xl);
 }

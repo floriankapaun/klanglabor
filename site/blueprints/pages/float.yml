@@ -1,9 +1,0 @@
-title: Float content page
-preset: page
-files: false
-fields:
-    layout:
-        label: Layout
-        type: layout
-        layouts:
-            - "1/1"
