@@ -14,14 +14,15 @@
         <section id="logo">
             <a class="block block-xl" href="<?= $site->url() ?>">
                 <img src="<?= asset('assets/img/klanglabor_logo.svg')->url() ?>" alt="<?= $site->title()->html() ?>">
+                <span class="sr-only">Zur Startseite</span>
             </a>
         </section>
 
         <section>
-            <p class="block block-xl">Suchbegriff eingeben...</p>
+            <p class="block block-xl caps">Suchbegriff eingeben...</p>
         </section>
 
-        <button aria-expanded="false" aria-label="Main Navigation Toggle" id="mainNavToggle" class="block block-xl">
+        <button aria-expanded="false" aria-label="Main Navigation Toggle" id="mainNavToggle" class="block block-xl caps">
             Menü
             <!--
             <span class="sr-only">öffnen</span>
@@ -29,7 +30,7 @@
             -->
         </button>
 
-        <nav aria-label="Main Navigation List" role="navigation" id="mainNav">
+        <nav aria-label="Main Navigation List" role="navigation" id="mainNav" class="caps">
             <?= $navHTML ?>
         </nav>
     </header>

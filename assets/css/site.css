@@ -11,7 +11,9 @@
 /**
  * 1. GLOBALS
  */
-* {
+*,
+*::before,
+*::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -46,6 +48,21 @@ body {
     line-height: var(--line_height-m);
     color: var(--ink);
     background-color: var(--paper);
+    text-rendering: optimizeSpeed;
+    font-feature-settings: "onum" 1, "pnum" 1, "kern" 1, "ss01" 1;
+    font-feature-settings: "kern" 1;
+    font-kerning: normal;
+    letter-spacing: 0.015em;
+    word-spacing: 0.001em;
+    -webkit-font-smoothing: antialiased; /* Chrome, Safari */
+    -moz-osx-font-smoothing: grayscale; /* Firefox */
+}
+
+h1, h2, h3, h4 {
+    font-size: var(--font_size-xl);
+    font-weight: var(--font_weight-xl);
+    line-height: var(--line_height-xl);
+    text-transform: uppercase;
 }
 
 img {
@@ -67,7 +84,20 @@ p + p { /* Paragraph spacing */
 /**
  * 2. UTILITIES
  */
-.sr-only {}
+.caps {
+    text-transform: uppercase;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    border: 0;
+}
 
 
 /**
@@ -120,6 +150,14 @@ p + p { /* Paragraph spacing */
     color: var(--ink);
     border-right: var(--border_width) solid var(--ink);
     border-bottom: var(--border_width) solid var(--ink);
+}
+
+.column h1,
+.column h2,
+.column h3,
+.column h4,
+.column p {
+    padding: 0 0.5rem;
 }
 
 @media (min-width: 700px) {
