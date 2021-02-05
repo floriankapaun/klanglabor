@@ -1,11 +1,9 @@
-const CANVAS = document.createElement('CANVAS');
+const CANVAS = document.getElementById('generative_pattern');
 const CTX = CANVAS.getContext('2d');
 const PIXEL_RATIO = window.devicePixelRatio || 1;
 
 CANVAS.width = window.innerWidth * PIXEL_RATIO;
 CANVAS.height = window.innerHeight * PIXEL_RATIO;
-
-document.body.append(CANVAS);
 
 CONFIG.startY = 500;
 

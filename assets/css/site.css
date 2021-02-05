@@ -1,3 +1,16 @@
+/**
+ * This CSS file is divided into four blocks.
+ *
+ * 1. GLOBALS - Normalization, variables and tags
+ * 2. UTILITIES - Utility classes
+ * 3. BLOCKS - Styles for generic components i.e. navigation
+ * 4. ELEMENTS - Styles for specific elements i.e. logo, button, ...
+ */
+
+
+/**
+ * 1. GLOBALS
+ */
 * {
     margin: 0;
     padding: 0;
@@ -9,7 +22,9 @@
 
     --ink: #000;
     --paper: #fff;
-    --highlight: orange;
+    --highlight: #FF9B00;
+
+    --font_family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
 
     --font_size-m: 1rem;
     --font_size-xl: 2rem;
@@ -19,13 +34,24 @@
 
     --line_height-m: 1.5;
     --line_height-xl: 1.35;
+
+    --border_width: 2px;
 }
 
 body {
-    font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+    position: relative;
+    font-family: var(--font_family);
     font-size: var(--font_size-m);
     font-weight: var(--font_weight-m);
     line-height: var(--line_height-m);
+    color: var(--ink);
+    background-color: var(--paper);
+}
+
+img {
+    display: block;
+    width: 100%;
+    height: auto;
 }
 
 button {
@@ -33,26 +59,103 @@ button {
     border: none;
 }
 
-canvas {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: -1;
-}
-
-#logo {
-    display: inline-block;
-    width: 100%;
-    max-width: 10rem;
-    vertical-align: middle;
+p + p { /* Paragraph spacing */
+    margin-top: 1rem;
 }
 
 
 /**
- * NAVIGATION
+ * 2. UTILITIES
  */
+.sr-only {}
+
+
+/**
+ * 3. BLOCKS
+ */
+.block {
+    display: inline-block;
+    color: var(--ink);
+    background-color: var(--paper);
+    margin: 1px;
+    padding: 0 0.5rem;
+    outline: var(--border_width) solid var(--ink);
+}
+
+.block.active {
+    color: var(--paper);
+    background-color: var(--highlight);
+}
+
+.block-xl {
+    font-size: var(--font_size-xl);
+    font-weight: var(--font_weight-xl);
+    line-height: var(--line_height-xl);
+}
+
+.spacing {
+    height: 100%;
+    min-height: 5rem;
+    background-color: var(--highlight);
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    border-top: var(--border_width) solid var(--ink);
+    border-left: var(--border_width) solid var(--ink);
+}
+
+.row + .row {
+    border-top: none;
+}
+
+.column {
+    flex-basis: 100%;
+    flex-grow: 1;
+    flex-shrink: 0;
+    min-width: 220px;
+    background-color: var(--paper);
+    color: var(--ink);
+    border-right: var(--border_width) solid var(--ink);
+    border-bottom: var(--border_width) solid var(--ink);
+}
+
+@media (min-width: 700px) {
+    .column-1-4 { flex-basis: 50%; }
+}
+
+@media (min-width: 1000px) {
+    .column-3-4 { flex-basis: 75%; }
+    .column-1-2 { flex-basis: 50%; }
+    .column-1-4 { flex-basis: 25%; }
+}
+
+
+/**
+ * 4. ELEMENTS
+ */
+#logo .block {
+    padding: 0;
+}
+
+#logo img {
+    display: inline-block;
+    width: 100%;
+    max-width: 14rem;
+    vertical-align: middle;
+}
+
+#generative_pattern {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
 #mainNav {
     --depth: 3;
     position: relative;
@@ -96,92 +199,4 @@ canvas {
         top: -1px;
         left: 100%;
     }
-}
-
-
-/**
- * UTILITY
- */
-.block {
-    display: inline-block;
-    color: var(--ink);
-    background-color: var(--paper);
-    margin: 1px;
-    padding: 0 0.5rem;
-    outline: 2px solid var(--ink);
-}
-
-.block.active {
-    color: var(--paper);
-    background-color: var(--highlight);
-}
-
-.block-xl {
-    font-size: var(--font_size-xl);
-    font-weight: var(--font_weight-xl);
-    line-height: var(--line_height-xl);
-}
-
-
-
-body {
-    margin: 0 auto;
-}
-
-figure {
-    position: relative;
-}
-
-img {
-    display: block;
-    width: 100%;
-    height: auto;
-}
-
-h2,
-p {
-    padding: 0.2rem 0.4rem;
-}
-
-p + p {
-    margin-bottom: 1.5rem;
-}
-
-.row {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    border-top: 2px solid #000;
-    border-left: 2px solid #000;
-}
-
-.row + .row {
-    border-top: unset;
-}
-
-.column {
-    flex-basis: 100%;
-    flex-grow: 1;
-    flex-shrink: 0;
-    border-right: 2px solid #000;
-    border-bottom: 2px solid #000;
-    min-width: 220px;
-    background-color: #fff;
-    color: #000;
-}
-
-@media (min-width: 700px) {
-    .column-1-4 { flex-basis: 50%; }
-}
-
-@media (min-width: 1000px) {
-    .column-3-4 { flex-basis: 75%; }
-    .column-1-2 { flex-basis: 50%; }
-    .column-1-4 { flex-basis: 25%; }
-}
-
-.spacing {
-    height: 100%;
-    min-height: 5rem;
-    background-color: orange;
 }

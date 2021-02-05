@@ -11,9 +11,9 @@
 </head>
 <body>
     <header>
-        <section>
+        <section id="logo">
             <a class="block block-xl" href="<?= $site->url() ?>">
-                <img id="logo" src="<?= asset('assets/img/klanglabor_logo.svg')->url() ?>" alt="<?= $site->title()->html() ?>">
+                <img src="<?= asset('assets/img/klanglabor_logo.svg')->url() ?>" alt="<?= $site->title()->html() ?>">
             </a>
         </section>
 
