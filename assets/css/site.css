@@ -104,6 +104,18 @@ p + p { /* Paragraph spacing */
     text-transform: uppercase;
 }
 
+.bg-paper {
+    background-color: var(--paper);
+}
+
+.bg-highlight {
+    background-color: var(--highlight);
+}
+
+.bg-transparent {
+    background-color: transparent;
+}
+
 .sr-only {
     position: absolute;
     width: 1px;
@@ -142,7 +154,6 @@ p + p { /* Paragraph spacing */
 .spacing {
     height: 100%;
     min-height: 5rem;
-    background-color: var(--highlight);
 }
 
 .row {
@@ -162,7 +173,6 @@ p + p { /* Paragraph spacing */
     flex-grow: 1;
     flex-shrink: 0;
     min-width: 220px;
-    background-color: var(--paper);
     color: var(--ink);
     border-right: var(--border_width) solid var(--ink);
     border-bottom: var(--border_width) solid var(--ink);
