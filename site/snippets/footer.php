@@ -1,8 +1,8 @@
-    <footer class="caps">
-        <section class="block block-xl">
+    <footer>
+        <section class="block">
             <a href="/impressum">Impressum</a>
         </section>
-        <section class="block block-xl">
+        <section class="block">
             <a href="https://www.hs-augsburg.de/Service/Datenschutz.html" target="_blank" rel="noreferrer">Datenschutz</a>
         </section>
         <!-- Config variables -->

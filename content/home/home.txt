@@ -1,0 +1,5 @@
+Title: Klanglabor
+
+----
+
+Layout: [{"attrs":[],"columns":[{"blocks":[{"content":{"text":"<p>Willkommen im Klanglabor.<\/p>"},"id":"482fcbb7-8eca-4b83-942e-db1a272922c3","isHidden":false,"type":"text"}],"id":"8401e360-78da-44da-83cb-84e1bd9da373","width":"1\/4"},{"blocks":[],"id":"5cc4b5a3-ef03-49dc-9013-a58ad0f96ec3","width":"3\/4"}],"id":"1ae85571-42be-463a-ad75-b749906edd3e"}]
