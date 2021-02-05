@@ -1,1 +1,5 @@
 Title: Error
+
+----
+
+Layout: [{"attrs":[],"columns":[{"blocks":[{"content":{"text":"<p>Diese Seite scheint nicht zu existieren. Versuchen Sie es \u00fcber die Navigation oder auf der <a href=\"\/\" rel=\"noopener noreferrer nofollow\">Startseite<\/a>.<\/p>"},"id":"128b7206-5b36-449c-be32-b69dd41f6da6","isHidden":false,"type":"text"}],"id":"64f88deb-9e1a-4f0a-9c82-d6f82012736d","width":"1\/4"},{"blocks":[],"id":"aa2833ed-c4f1-4204-8c46-8c001af42f24","width":"3\/4"}],"id":"a8a3be59-8686-4c51-82fe-c2a170684a21"}]

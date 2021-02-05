@@ -58,11 +58,27 @@ body {
     -moz-osx-font-smoothing: grayscale; /* Firefox */
 }
 
+footer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+footer a {
+    text-decoration: none;
+    color: inherit;
+}
+
 h1, h2, h3, h4 {
     font-size: var(--font_size-xl);
     font-weight: var(--font_weight-xl);
     line-height: var(--line_height-xl);
     text-transform: uppercase;
+}
+
+a {
+    color: var(--highlight);
 }
 
 img {
