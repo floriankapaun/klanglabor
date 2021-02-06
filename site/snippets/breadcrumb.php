@@ -2,9 +2,7 @@
     <ul id="breadcrumb">
         <!-- Skip home and current page in breadcrumbs -->
         <?php foreach($site->breadcrumb() as $crumb): ?>
-            <?php if ($crumb->isHomePage() || $crumb->id() == $page->id()):
-                continue;
-            endif; ?>
+            <?php if ($crumb->isHomePage() || $crumb->id() == $page->id()) continue ?>
             <li class="caps block block-xl">
                 \ <?= html($crumb->title()) ?>
             </li>
