@@ -1,7 +1,7 @@
 <?php snippet('header') ?>
 
 <main>
-    <canvas id="generative_pattern"></canvas>
+    <div id="generative_pattern"></div>
     <article class="row">
         <section class="column column-1-1 bg-paper">
             <a class="anchor-link" href="#<?= $page->title()->html() ?>">

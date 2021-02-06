@@ -1,4 +1,5 @@
-const CANVAS = document.getElementById('generative_pattern');
+const BG = document.getElementById('generative_pattern');
+const CANVAS = document.createElement('CANVAS');
 const CTX = CANVAS.getContext('2d');
 const PIXEL_RATIO = window.devicePixelRatio || 1;
 
@@ -175,6 +176,9 @@ const draw = () => {
         CONFIG.startY = i * stepSize - 500;
         generateWave(CANVAS, CTX, CONFIG.numberOfPoints, CONFIG.startY, CONFIG.sineWidth, CONFIG.sineHeight, CONFIG.distortionInterval, CONFIG.tension, CONFIG.numberOfSegments, CONFIG.lineWidth);
     }
+    // Convert the canvas content to an base64 url and apply it as background-image
+    const url = CANVAS.toDataURL('image/png');
+    BG.style.backgroundImage = `url(${url})`;
 }
 
 
