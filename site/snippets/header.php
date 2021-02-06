@@ -7,6 +7,7 @@
     <meta name="description" content="<?= $site->description() ?>">
     <meta name="keywords" content="<?= $site->keywords() ?>">
     <title><?= $page->title()->html() ?> | <?= $site->title()->html() ?></title>
+    <link rel="shortcut icon" href="<?= asset('assets/img/favicon.ico')->url() ?>" type="image/icon type">
     <!-- Global CSS -->
     <?= css('assets/css/site.css') ?>
 </head>
