@@ -27,9 +27,7 @@ function getNavHTML($item) {
 }
 
 return function ($site, $page) {
-    # Fetch and store the content for the title tag and the meta description
-    $titleTag        = $page->title() . ' \ ' . $site->title();
-    $metaDescription = $page->text()->excerpt(120);
+    $titleTag = $page->title() . ' \ ' . $site->title();
     
     $navHTML = getNavHTML($site);
 
@@ -52,7 +50,6 @@ return function ($site, $page) {
 
     return [
         'titleTag' => $titleTag,
-        'metaDescription' => $metaDescription,
         'navHTML' => $navHTML,
         'numberOfLines' => getRandom($minNumberOfLines, $maxNumberOfLines),
         'numberOfPoints' => getRandom($minNumberOfPoints, $maxNumberOfPoints),
