@@ -23,15 +23,7 @@
             <p class="block block-xl caps">Suchbegriff eingeben...</p>
         </section>
 
-        <button aria-expanded="false" aria-label="Main Navigation Toggle" id="mainNavToggle" class="block block-xl caps">
-            Menü
-            <!--
-            <span class="sr-only">öffnen</span>
-            <span class="sr-only hidden">schließen</span>
-            -->
-        </button>
+        <?php snippet('navigation') ?>
 
-        <nav aria-label="Main Navigation List" role="navigation" id="mainNav" class="caps">
-            <?= $navHTML ?>
-        </nav>
+        <?php snippet('breadcrumb')  ?>
     </header>

@@ -60,6 +60,7 @@ body {
     font-kerning: normal;
     letter-spacing: 0.015em;
     word-spacing: 0.001em;
+    word-break: break-word;
     -webkit-font-smoothing: antialiased; /* Chrome, Safari */
     -moz-osx-font-smoothing: grayscale; /* Firefox */
 }
@@ -284,4 +285,13 @@ p + p { /* Paragraph spacing */
         top: -1px;
         left: 100%;
     }
+}
+
+#breadcrumb {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    list-style: none;
 }
