@@ -1,6 +1,4 @@
-title: Content page
-preset: page
-files: false
+title: Inhalt
 fields:
     layout:
         label: Layout
