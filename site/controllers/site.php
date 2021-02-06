@@ -26,7 +26,11 @@ function getNavHTML($item) {
     return $nav;
 }
 
-return function ($site) {
+return function ($site, $page) {
+    # Fetch and store the content for the title tag and the meta description
+    $titleTag        = $page->title() . ' \ ' . $site->title();
+    $metaDescription = $page->text()->excerpt(120);
+    
     $navHTML = getNavHTML($site);
 
     $minNumberOfLines = $site->minNumberOfLines()->toFloat();
@@ -47,6 +51,8 @@ return function ($site) {
     $maxLineWidth = $site->maxLineWidth()->toFloat();
 
     return [
+        'titleTag' => $titleTag,
+        'metaDescription' => $metaDescription,
         'navHTML' => $navHTML,
         'numberOfLines' => getRandom($minNumberOfLines, $maxNumberOfLines),
         'numberOfPoints' => getRandom($minNumberOfPoints, $maxNumberOfPoints),
