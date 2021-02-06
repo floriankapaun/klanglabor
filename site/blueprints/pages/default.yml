@@ -12,3 +12,11 @@ fields:
             - "1/4, 1/2, 1/4"
             - "1/4, 1/4, 1/2"
             - "1/4, 1/4, 1/4, 1/4"
+        fieldsets:
+            - heading
+            - text
+            - image
+            - video
+            - list
+            - quote
+            - code
