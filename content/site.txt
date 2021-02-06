@@ -6,7 +6,7 @@ Minnumberoflines: 50
 
 ----
 
-Maxnumberoflines: 500
+Maxnumberoflines: 400
 
 ----
 
