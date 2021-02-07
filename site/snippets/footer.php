@@ -3,6 +3,7 @@
         <a class="block" href="https://www.hs-augsburg.de/Service/Datenschutz.html" target="_blank" rel="noreferrer">Datenschutz</a>
         <!-- Config variables -->
         <script type="text/javascript">
+            const CSRF = "<?= csrf() ?>";
             const CONFIG = {
                 numberOfLines: <?= $numberOfLines ?>,
                 numberOfPoints: <?= $numberOfPoints ?>,
@@ -17,6 +18,7 @@
         <!-- Global JavaScript -->
         <?= js('assets/js/menu.js') ?>
         <?= js('assets/js/bg.js') ?>
+        <?= js('assets/js/search.js') ?>
     </footer>
 </body>
 </html>

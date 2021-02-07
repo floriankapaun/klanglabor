@@ -251,6 +251,24 @@ p + p { /* Paragraph spacing */
     z-index: -1;
 }
 
+#search {
+    position: relative;
+}
+
+#search-input {
+    max-width: 100%;
+}
+
+#search-input::-webkit-search-cancel-button{
+    -webkit-appearance: none;
+}
+
+#search-results {
+    position: absolute;
+    top: 100%;
+    left: 0;
+}
+
 #mainNav {
     --depth: 3;
     position: relative;

@@ -18,9 +18,7 @@
             </a>
         </section>
 
-        <section>
-            <p class="block block-xl caps">Suchbegriff eingeben...</p>
-        </section>
+        <?php snippet('search') ?>
 
         <?php snippet('navigation') ?>
 
