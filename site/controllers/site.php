@@ -26,10 +26,26 @@ function getNavHTML($item) {
     return $nav;
 }
 
+function getNavDepth($item) {
+    $maxDepth = 1;
+    foreach($item->children->listed() as $child) {
+        $hasChildren = sizeof($child->children()->listed()) > 0;
+        if ($hasChildren) {
+            $depth = getNavDepth($child) + 1;
+
+            if ($depth > $maxDepth) {
+                $maxDepth = $depth;
+            }
+        }
+    }
+    return $maxDepth;
+}
+
 return function ($site, $page) {
     $titleTag = $page->title() . ' \ ' . $site->title();
     
     $navHTML = getNavHTML($site);
+    $navDepth = getNavDepth($site);
 
     $minNumberOfLines = $site->minNumberOfLines()->toFloat();
     $maxNumberOfLines = $site->maxNumberOfLines()->toFloat();
@@ -51,6 +67,7 @@ return function ($site, $page) {
     return [
         'titleTag' => $titleTag,
         'navHTML' => $navHTML,
+        'navDepth' => $navDepth,
         'numberOfLines' => getRandom($minNumberOfLines, $maxNumberOfLines),
         'numberOfPoints' => getRandom($minNumberOfPoints, $maxNumberOfPoints),
         'numberOfSegments' => getRandom($minNumberOfSegments, $maxNumberOfSegments),
