@@ -10,7 +10,7 @@ const OUTPUT = document.getElementById('search-results');
  * @returns {Object} - API response in JSON format
  */
 const search = (query) => {
-    return fetch(`${API_SLUG}/search?q=${query}`, {
+    return fetch(`${URL}/${API_SLUG}/search?q=${query}`, {
         method: 'POST',
         headers: {
             Authorization: 'Basic ' + btoa(`${API_USER}:${API_PASSWORD}`),
