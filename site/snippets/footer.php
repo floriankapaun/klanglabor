@@ -4,6 +4,9 @@
         <!-- Config variables -->
         <script type="text/javascript">
             const CSRF = "<?= csrf() ?>";
+            const API_SLUG = "<?= option('env')['API_SLUG'] ?>";
+            const API_USER = "<?= option('env')['API_USER'] ?>";
+            const API_PASSWORD = "<?= option('env')['API_PASSWORD'] ?>";
             const CONFIG = {
                 numberOfLines: <?= $numberOfLines ?>,
                 numberOfPoints: <?= $numberOfPoints ?>,

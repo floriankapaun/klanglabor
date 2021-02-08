@@ -282,8 +282,6 @@ p + p { /* Paragraph spacing */
     flex-direction: column;
     align-items: flex-start;
     flex-wrap: wrap;
-    width: 100vw; /* to ensure stretching */
-    max-width: calc(100vw / var(--depth));
     list-style: none;
 }
 
@@ -307,7 +305,11 @@ p + p { /* Paragraph spacing */
     color: inherit;
 }
 
-@media (min-width: 700px) {
+@media (min-width: 1024px) {
+    .nav-section {
+        width: 100vw; /* to ensure stretching */
+        max-width: calc(100vw / var(--depth));
+    }
     .nav-section .nav-section {
         top: -1px;
         left: 100%;

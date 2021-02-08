@@ -1,4 +1,3 @@
-const API_SEARCH_URL = '/api/v1/search?q=';
 const INPUT = document.getElementById('search-input');
 const OUTPUT = document.getElementById('search-results');
 
@@ -8,18 +7,18 @@ const OUTPUT = document.getElementById('search-results');
  *
  * @param {String} query - The query to search by
  *
- * @returns {Object} - API response
+ * @returns {Object} - API response in JSON format
  */
 const search = (query) => {
-    return fetch(`${API_SEARCH_URL}${query}`, {
-        method: 'GET',
+    return fetch(`${API_SLUG}/search?q=${query}`, {
+        method: 'POST',
         headers: {
-            'X-CSRF': CSRF,
+            Authorization: 'Basic ' + btoa(`${API_USER}:${API_PASSWORD}`),
         },
     })
         .then((response) => response.json())
         .catch((error) => console.error(error));
-}
+};
 
 
 /**
@@ -37,7 +36,7 @@ const handleSearchInput = async () => {
     // Handle errors
     if (response.status && response.status === 'error') {
         OUTPUT.innerHTML = '';
-        console.error(`Error ${response.status}: ${response.message}`);
+        console.error(`${response.status}: ${response.message}`);
         return false;
     }
     // Return the data

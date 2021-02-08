@@ -1,0 +1,24 @@
+# By default, Kirby only has the `admin` role, a user role that is
+# allowed to do anything.
+#
+# This user blueprint is used to create a new user role `api` which
+# is allowed to read only.
+#
+# More about users, roles and permissions:
+# https://getkirby.com/docs/guide/users/managing-users
+title: API
+description: read-only rights
+permissions:
+    access:
+        *: false
+        panel: true
+    pages:
+        *: false
+        read: true
+    files:
+        *: false
+        read: true
+    languages: false
+    site: false
+    user: false
+    users: false
