@@ -11,10 +11,15 @@ return [
                     // Get query from URL (?q=...)
                     $query   = get('q');
                     // Search by query
-                    $results = $kirby->site()->search($query, [
-                        'words' => false, 
-                        'score' => ['id' => 64,'title' => 64],
-                    ])->paginate(10);
+                    $results = $kirby
+                        ->site()
+                        ->search($query, [
+                            'words' => false, 
+                            'score' => ['id' => 64,'title' => 64],
+                        ])
+                        ->filterBy('template', '!=', 'category') // exclude category pages
+                        ->filterBy('id', '!=', 'error') // exclude the error page
+                        ->paginate(10);
                     // Add page titles to results
                     foreach ($results as $key => $value) {
                         $results->{$key}->title = $value->title();
