@@ -20,9 +20,7 @@
             };
         </script>
         <!-- Global JavaScript -->
-        <?= js('assets/js/menu.js') ?>
-        <?= js('assets/js/bg.js') ?>
-        <?= js('assets/js/search.js') ?>
+        <?= js('assets/js/site.js') ?>
     </footer>
 </body>
 </html>
