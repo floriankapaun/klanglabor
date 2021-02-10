@@ -219,10 +219,10 @@ p + p { /* Paragraph spacing */
     line-height: var(--line_height-xl);
 }
 
-.block > h1,
-.block > h2,
-.block > h3,
-.block > h4,
+.block h1,
+.block h2,
+.block h3,
+.block h4,
 .block > blockquote,
 .block > .nav-link,
 input.block,
