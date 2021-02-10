@@ -3,7 +3,7 @@
 <main>
     <div id="generative_pattern"></div>
     <article class="row">
-        <section class="column column-1-1 bg-paper">
+        <section class="column column-1-1 bg-paper block ">
             <a class="anchor-link" href="#<?= $page->title()->html() ?>">
                 <h1 id="<?= $page->title()->html() ?>"><?= $page->title()->html() ?></h1>
             </a>

@@ -8,7 +8,7 @@
             $columnWidth = 'column-' . str_replace('/', '-', $column->width());
             $backgroundColor = $isEmpty && $transparent ? 'bg-transparent' : 'bg-paper';
             
-            $sectionClassList = 'column ' . $columnWidth . ' ' . $backgroundColor;
+            $sectionClassList = 'block column ' . $columnWidth . ' ' . $backgroundColor;
             ?>
             <section class="<?= $sectionClassList ?>" style="--columns: <?= $column->span() ?>">
                 <?php e(

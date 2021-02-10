@@ -1,5 +1,5 @@
 /**
- * This CSS file is divided into four blocks.
+ * This CSS file is divided into four sections.
  *
  * 1. GLOBALS - Normalization, variables and tags
  * 2. UTILITIES - Utility classes
@@ -63,6 +63,7 @@ body {
     word-break: break-word;
     -webkit-font-smoothing: antialiased; /* Chrome, Safari */
     -moz-osx-font-smoothing: grayscale; /* Firefox */
+    overflow-x: hidden;
 }
 
 footer {
@@ -156,10 +157,13 @@ p + p { /* Paragraph spacing */
 }
 
 .block {
+    position: relative;
+    top: 1px;
+    left: 1px;
     display: inline-block;
     color: var(--ink);
     background-color: var(--paper);
-    padding: 0 0.5rem;
+    margin: -2px 0 0 -2px;
     border: var(--border_width) solid var(--ink);
 }
 
@@ -179,6 +183,16 @@ p + p { /* Paragraph spacing */
     line-height: var(--line_height-xl);
 }
 
+.block h1,
+.block h2,
+.block h3,
+.block h4,
+.block p,
+input.block,
+button.block {
+    padding: 0 0.5rem;
+}
+
 .spacing {
     height: 100%;
     min-height: 5rem;
@@ -188,8 +202,7 @@ p + p { /* Paragraph spacing */
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    border-top: var(--border_width) solid var(--ink);
-    border-left: var(--border_width) solid var(--ink);
+    max-width: 100%;
 }
 
 .row + .row {
@@ -202,16 +215,6 @@ p + p { /* Paragraph spacing */
     flex-shrink: 0;
     min-width: 220px;
     color: var(--ink);
-    border-right: var(--border_width) solid var(--ink);
-    border-bottom: var(--border_width) solid var(--ink);
-}
-
-.column h1,
-.column h2,
-.column h3,
-.column h4,
-.column p {
-    padding: 0 0.5rem;
 }
 
 @media (min-width: 700px) {
