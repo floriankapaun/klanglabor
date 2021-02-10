@@ -224,6 +224,7 @@ p + p { /* Paragraph spacing */
 .block > h3,
 .block > h4,
 .block > blockquote,
+.block > .nav-link,
 input.block,
 button.block {
     padding: 0 0.5rem;
@@ -310,6 +311,7 @@ a.block {
     position: absolute;
     top: 100%;
     left: 0;
+    z-index: 200;
 }
 
 #mainNav {
