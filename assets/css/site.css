@@ -20,7 +20,7 @@
 }
 
 :root {
-    font-size: 105%;
+    font-size: 110%;
 
     --ink: #000;
     --paper: #fff;
@@ -34,8 +34,8 @@
     --font_weight-m: 400;
     --font_weight-xl: 700;
 
-    --line_height-m: 1.5;
-    --line_height-xl: 1.35;
+    --line_height-m: 1.52;
+    --line_height-xl: 1.3;
 
     --border_width: 2px;
 }
@@ -55,11 +55,10 @@ body {
     color: var(--ink);
     background-color: var(--paper);
     text-rendering: optimizeSpeed;
-    font-feature-settings: "onum" 1, "pnum" 1, "kern" 1, "ss01" 1;
     font-feature-settings: "kern" 1;
+    font-feature-settings: "onum" 1, "pnum" 1, "kern" 1, "ss01" 1;
     font-kerning: normal;
-    letter-spacing: 0.015em;
-    word-spacing: 0.001em;
+    letter-spacing: 0.01em;
     word-break: break-word;
     -webkit-font-smoothing: antialiased; /* Chrome, Safari */
     -moz-osx-font-smoothing: grayscale; /* Firefox */
@@ -89,6 +88,11 @@ a {
     color: var(--highlight);
 }
 
+figure {
+    width: 100%;
+    height: 100%;
+}
+
 img,
 iframe {
     display: block;
@@ -97,6 +101,7 @@ iframe {
 }
 
 iframe {
+    height: 100%;
     aspect-ratio: 16 / 9;
     border: none;
 }
@@ -187,11 +192,14 @@ p + p { /* Paragraph spacing */
 .block h2,
 .block h3,
 .block h4,
-.block p,
 input.block,
-button.block,
+button.block {
+    padding: 0 0.5rem;
+}
+
+.block p,
 a.block {
-    padding: 0.2rem 0.5rem;
+    padding: 0.3rem 0.5rem;
 }
 
 .spacing {
@@ -206,23 +214,19 @@ a.block {
     max-width: 100%;
 }
 
-.row + .row {
-    border-top: none;
-}
-
 .column {
     flex-basis: 100%;
     flex-grow: 1;
     flex-shrink: 0;
-    min-width: 220px;
     color: var(--ink);
 }
 
-@media (min-width: 700px) {
+@media (min-width: 600px) {
+    .column { min-width: 285px; }
     .column-1-4 { flex-basis: 50%; }
 }
 
-@media (min-width: 1000px) {
+@media (min-width: 1140px) {
     .column-3-4 { flex-basis: 75%; }
     .column-1-2 { flex-basis: 50%; }
     .column-1-4 { flex-basis: 25%; }
@@ -310,13 +314,13 @@ a.block {
     color: inherit;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1140px) {
     .nav-section {
         width: 100vw; /* to ensure stretching */
         max-width: calc(100vw / var(--depth));
     }
     .nav-section .nav-section {
-        top: -1px;
+        top: 0px;
         left: 100%;
     }
 }
