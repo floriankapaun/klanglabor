@@ -1,3 +1,176 @@
-title: Site
-preset: pages
-unlisted: true
+title: Klanglabor Dashboard
+
+tabs:
+    # content tab
+    content:
+        label: Seiten
+        icon: text
+        preset: pages
+        unlisted: true
+        drafts:
+            headline: Entwürfe
+        unlisted:
+            headline: Nicht gelistete Seiten (trotzdem öffentlich)
+        listed:
+            headline: Gelistete Seiten
+
+    # bg config tab
+    bg:
+        label: Grafik
+        icon: cog
+        fields:
+            minNumberOfLines:
+                label: Anzahl der Linien (min)
+                type: number
+                width: 1/2
+                default: 100
+                min: 1
+                max: 1000
+                step: 1
+                required: true
+            maxNumberOfLines:
+                label: Anzahl der Linien (max)
+                type: number
+                width: 1/2
+                default: 100
+                min: 1
+                max: 1000
+                step: 1
+                required: true
+
+            minNumberOfPoints:
+                label: Anzahl der Punkte (min)
+                type: number
+                width: 1/2
+                default: 50
+                min: 1
+                max: 1000
+                step: 1
+                required: true
+            maxNumberOfPoints:
+                label: Anzahl der Punkte (max)
+                type: number
+                width: 1/2
+                default: 50
+                min: 1
+                max: 1000
+                step: 1
+                required: true
+
+            minNumberOfSegments:
+                label: Anzahl der Segmente (zur Glättung der Linie zwischen zwei Punkten) (min)
+                type: number
+                width: 1/2
+                default: 16
+                min: 1
+                max: 100
+                step: 1
+                required: true
+            maxNumberOfSegments:
+                label: Anzahl der Segmente (zur Glättung der Linie zwischen zwei Punkten) (max)
+                type: number
+                width: 1/2
+                default: 16
+                min: 1
+                max: 100
+                step: 1
+                required: true
+
+            minSineWidth:
+                label: Sinus-Breite (min)
+                type: number
+                width: 1/2
+                default: 0.08
+                min: 0.001
+                max: 1000
+                step: .001
+                required: true
+            maxSineWidth:
+                label: Sinus-Breite (max)
+                type: number
+                width: 1/2
+                default: 0.08
+                min: 0.001
+                max: 1000
+                step: .001
+                required: true
+
+            minSineHeight:
+                label: Sinus-Höhe (min)
+                type: number
+                width: 1/2
+                default: 18
+                min: 0.001
+                max: 1000
+                step: .001
+                required: true
+            maxSineHeight:
+                label: Sinus-Höhe (max)
+                type: number
+                width: 1/2
+                default: 18
+                min: 0.001
+                max: 1000
+                step: .001
+                required: true
+
+            minTension:
+                label: Spannung (Glättung) (min)
+                type: number
+                width: 1/2
+                default: 0.35
+                min: 0.001
+                max: 100
+                step: .001
+                required: true
+            maxTension:
+                label: Spannung (Glättung) (max)
+                type: number
+                width: 1/2
+                default: 0.35
+                min: 0.001
+                max: 100
+                step: .001
+                required: true
+
+            minDistortionInterval:
+                label: Verzerrungs-Interval (min)
+                type: number
+                width: 1/2
+                default: 50
+                after: px
+                min: 0
+                max: 1000
+                step: .1
+                required: true
+            maxDistortionInterval:
+                label: Verzerrungs-Interval (max)
+                type: number
+                width: 1/2
+                default: 50
+                after: px
+                min: 0
+                max: 1000
+                step: .1
+                required: true
+
+            minLineWidth:
+                label: Strichstärke (min)
+                type: number
+                width: 1/2
+                default: 2
+                after: px
+                min: 0.1
+                max: 100
+                step: .01
+                required: true
+            maxLineWidth:
+                label: Strichstärke (max)
+                type: number
+                width: 1/2
+                default: 2
+                after: px
+                min: 0.1
+                max: 100
+                step: .01
+                required: true

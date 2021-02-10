@@ -1,8 +1,22 @@
-title: Default Page
-preset: page
+title: Inhalt
 fields:
-  text:
-    label: Text
-    type: textarea
-    size: large
-
+    layout:
+        label: Layout
+        type: layout
+        layouts:
+            - "1/1"
+            - "1/2, 1/2"
+            - "1/4, 3/4"
+            - "3/4, 1/4"
+            - "1/2, 1/4, 1/4"
+            - "1/4, 1/2, 1/4"
+            - "1/4, 1/4, 1/2"
+            - "1/4, 1/4, 1/4, 1/4"
+        fieldsets:
+            - heading
+            - text
+            - image
+            - video
+            - list
+            - quote
+            - code

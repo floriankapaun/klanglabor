@@ -1,6 +1,6 @@
 {
     "name": "floriankapaun/klanglabor",
-    "description": "Kirby Plainkit",
+    "description": "Kirby CMS setup for the Klanglabor at University of Applied Sciences Augsburg",
     "type": "website",
     "keywords": ["klanglabor", "hs", "augsburg", "hochschule", "university of applied sciences"],
     "homepage": "https://klanglabor.hs-augsburg.de",

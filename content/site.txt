@@ -1,1 +1,69 @@
-Title: Site Title
+Title: Klanglabor
+
+----
+
+Minnumberoflines: 50
+
+----
+
+Maxnumberoflines: 400
+
+----
+
+Minnumberofpoints: 30
+
+----
+
+Maxnumberofpoints: 80
+
+----
+
+Minnumberofsegments: 15
+
+----
+
+Maxnumberofsegments: 15
+
+----
+
+Minsinewidth: 0.05
+
+----
+
+Maxsinewidth: 0.15
+
+----
+
+Minsineheight: 14
+
+----
+
+Maxsineheight: 24
+
+----
+
+Mintension: 0.2
+
+----
+
+Maxtension: 0.4
+
+----
+
+Mindistortioninterval: 20
+
+----
+
+Maxdistortioninterval: 100
+
+----
+
+Minlinewidth: 1
+
+----
+
+Maxlinewidth: 1
+
+----
+
+Author: Robert Rose
