@@ -52,8 +52,6 @@ body {
     font-size: var(--font_size-m);
     font-weight: var(--font_weight-m);
     line-height: var(--line_height-m);
-    color: var(--ink);
-    background-color: var(--paper);
     text-rendering: optimizeSpeed;
     font-feature-settings: "kern" 1;
     font-feature-settings: "onum" 1, "pnum" 1, "kern" 1, "ss01" 1;
@@ -62,6 +60,11 @@ body {
     word-break: break-word;
     -webkit-font-smoothing: antialiased; /* Chrome, Safari */
     -moz-osx-font-smoothing: grayscale; /* Firefox */
+    min-height: 100vh;
+    color: var(--ink);
+    background-color: var(--paper);
+    background-size: contain;
+    background-repeat: repeat;
     overflow-x: hidden;
 }
 
@@ -224,9 +227,10 @@ p + p { /* Paragraph spacing */
 .block h3,
 .block h4,
 .block > blockquote,
-.block > .nav-link,
+.block.nav-link,
 input.block,
-button.block {
+button.block,
+li.block {
     padding: 0 0.5rem;
 }
 
@@ -281,18 +285,6 @@ a.block {
     width: 100%;
     max-width: 14rem;
     vertical-align: middle;
-}
-
-#generative_pattern {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    min-height: 100vh;
-    height: 100%;
-    background-size: contain;
-    background-repeat: repeat-y;
-    z-index: -1;
 }
 
 #search {

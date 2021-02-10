@@ -161,7 +161,7 @@ INPUT.addEventListener('search', handleSearchInput);
  * 3. GENERATIVE BACKGROUND PATTERN                            *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-const BG = document.getElementById('generative_pattern');
+const BG = document.body;
 const CANVAS = document.createElement('CANVAS');
 const CTX = CANVAS.getContext('2d');
 const PIXEL_RATIO = window.devicePixelRatio || 1;

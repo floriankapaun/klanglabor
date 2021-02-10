@@ -1,7 +1,6 @@
 <?php snippet('header') ?>
 
 <main>
-    <div id="generative_pattern"></div>
     <article class="row">
         <section class="column column-1-1 bg-paper block ">
             <a class="anchor-link" href="#<?= $page->title()->html() ?>">
