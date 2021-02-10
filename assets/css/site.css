@@ -189,8 +189,9 @@ p + p { /* Paragraph spacing */
 .block h4,
 .block p,
 input.block,
-button.block {
-    padding: 0 0.5rem;
+button.block,
+a.block {
+    padding: 0.2rem 0.5rem;
 }
 
 .spacing {
@@ -275,6 +276,7 @@ button.block {
 #mainNav {
     --depth: 3;
     position: relative;
+    z-index: 100;
 }
 
 .nav-section {
