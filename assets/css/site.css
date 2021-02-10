@@ -163,7 +163,7 @@ p + p { /* Paragraph spacing */
 }
 
 .bg-transparent {
-    background-color: transparent;
+    background-color: transparent !important;
 }
 
 .sr-only {
