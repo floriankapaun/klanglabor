@@ -338,12 +338,14 @@ a.block {
 .nav-section .nav-section {
     position: absolute;
     top: 100%;
+    right: 0;
     left: 1rem;
     z-index: 10;
 }
 
 .nav-item {
     position: relative;
+    width: 100%;
 }
 
 .nav-link {
@@ -358,6 +360,7 @@ a.block {
     }
     .nav-section .nav-section {
         top: 0px;
+        right: unset;
         left: 100%;
     }
 }
