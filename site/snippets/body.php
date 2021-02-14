@@ -11,11 +11,16 @@
             $sectionClassList = 'block column ' . $columnWidth . ' ' . $backgroundColor;
             ?>
             <section class="<?= $sectionClassList ?>" style="--columns: <?= $column->span() ?>">
-                <?php e(
-                    $isEmpty,
-                    '<div class="spacing bg-' . ($transparent ? 'transparent' : 'highlight') . '"></div>',
-                    $column->blocks()
-                ); ?>
+                <?php if ($isEmpty): ?>
+                    <div class="spacing bg-<?php e($transparent, 'transparent', 'highlight') ?>"></div>
+                <?php else: ?>
+                    <?php foreach($column->blocks() as $block): ?>
+                        <?php snippet('blocks/' . $block->type(), [
+                            'block' => $block,
+                            'columnWidth' => $column->width(),
+                        ]) ?>
+                    <?php endforeach; ?>
+                <?php endif; ?>
             </section>
         <?php endforeach ?>
     </article>
