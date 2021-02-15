@@ -141,7 +141,7 @@ const handleSearchInput = async () => {
     if (data && data.length !== 0) {
         let output = '';
         for (const [key, value] of Object.entries(data)) {
-            output += `<li class="block block-xl caps"><a class="nav-link" href="/${key}">\\ ${value.title.value}</a></li>`;
+            output += `<li class="block block-xl caps"><a class="nav-link" href="/${key}">- ${value.title.value}</a></li>`;
         }
         OUTPUT.innerHTML = output;
     } else {
