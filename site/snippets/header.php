@@ -6,8 +6,8 @@
     <?php e($page->isUnlisted() && !$page->isHomePage(), '<meta name="robots" content="noindex">'); ?>
     <title><?php e($page->isHomePage(), $page->title()->html(), $titleTag) ?></title>
     <link rel="shortcut icon" href="<?= asset('assets/img/favicon.ico')->url() ?>" type="image/icon type">
-    <!-- Global CSS -->
-    <?= css('assets/css/site.css') ?>
+    <!-- Load CSS inline because it is super tiny -->
+    <style><?= require 'assets/css/site.css' ?></style>
 </head>
 <body>
     <header>

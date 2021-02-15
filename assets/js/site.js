@@ -346,6 +346,7 @@ const draw = () => {
 }
 
 
+// OPTIMIZE: Reduce calculations
 draw();
 
 

@@ -23,8 +23,8 @@
             };
             const COOKIE_STORE = <?= $cookieStore ?>;
         </script>
-        <!-- Global JavaScript -->
-        <?= js('assets/js/site.js', ['defer' => true]) ?>
+        <!-- Load global JavaScript inline because it is super tiny -->
+        <script type="text/javascript" async defer><?= require 'assets/js/site.js' ?></script>
     </footer>
 </body>
 </html>
