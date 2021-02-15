@@ -2,7 +2,7 @@
 
 $env = [
     'API_SLUG' => 'api/v1',
-    'API_USER' => 'rest@api.com',
+    'API_USER' => 'rest-api@klanglabor.hs-augsburg.de',
     'API_PASSWORD' => 'password',
 ];
 
