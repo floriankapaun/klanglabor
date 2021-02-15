@@ -1,9 +1,10 @@
 /**
- * This JavaScript file contains three inline modules.
+ * This JavaScript file contains four inline modules.
  *
  * 1. Navigation Menu
  * 2. Search
  * 3. Generative Background Pattern
+ * 4. Cookie Consent
  */
 
 
@@ -346,3 +347,156 @@ const draw = () => {
 
 
 draw();
+
+
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 4. COOKIE CONSENT                                           *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+const COOKIE_CONSENT = document.getElementById('cookieConsent');
+const OPEN_COOKIE_CONSENT = document.getElementById('cookieConsentOpen');
+const CLOSE_COOKIE_CONSENT = document.getElementById('cookieConsentClose');
+
+
+/**
+ * Set a cookie.
+ * Creates or updates an existing one by identifier cookieName.
+ *
+ * @param {String} cookieName
+ * @param {String} cookieValue
+ * @param {Number} daysToExist
+ */
+const setCookie = (cookieName, cookieValue, daysToExist = 365) => {
+    // Encode cookieValue in order to escape semicolons, commas, and whitespace
+    const encodedCookieValue = encodeURIComponent(cookieValue);
+    const expirationDate = daysToExist * 24 * 60 * 60;
+    document.cookie = `${cookieName}=${encodedCookieValue};max-age=${expirationDate};path=/;SameSite=Lax;`;
+};
+
+
+/**
+ * Get a cookie and its values
+ *
+ * @param {String} cookieName
+ */
+const getCookie = (cookieName) => {
+    // Decode the cookie string, to handle cookies with special characters, e.g. '$'
+    const decodedCookieString = decodeURIComponent(document.cookie);
+    // Split cookie string and get all individual name=value pairs in an array
+    const cookieArray = decodedCookieString.split(';');
+    for (const cookieString of cookieArray) {
+        const cookie = cookieString.split('=');
+        // Remove whitespace at the beginning of the cookie name
+        // and compare it with the given string
+        if (cookieName === cookie[0].trim()) return cookie[1];
+    }
+    return null;
+};
+
+
+/**
+ * Resets the browsers cookies to the COOKIE_STORE values
+ */
+const resetCookies = () => {
+    for (const [key, cookie] of Object.entries(COOKIE_STORE)) {
+        // Reset each cookie
+        setCookie(cookie.name, cookie.allow);
+        // And reset each cookies stored value
+        cookie.value = cookie.allow;
+    }
+};
+
+
+/**
+ * Enables or disables the statistics.
+ * Using Matomot for statistical tracking.
+ *
+ * @param {Boolean} boolean - whether the statistics should be enabled or disabled
+ */
+const enableStatistics = (boolean) => {
+    if (boolean) {
+        console.log('enabled stats');
+    } else {
+        console.log('disabled stats');
+    }
+};
+
+
+/**
+ * Initially cookie consent setup.
+ * See which cookies are already set, pen the consent if needed,
+ * update the store and enable statistics.
+ */
+const initCookieConsent = () => {
+    // Check for previously defined cookie settings
+    const setValues = [];
+    for (const [key, cookie] of Object.entries(COOKIE_STORE)) {
+        const cookieValue = getCookie(cookie.name);
+        if (cookieValue) setValues.push(cookieValue);
+        cookie.value = cookieValue && cookieValue !== 'false' ? true : false;
+        // Initialize cookie setting input values and COOKIE_STORE
+        const cookieNode = document.getElementById(cookie.nodeId);
+        handleCookieChange(key)({ target: cookieNode });
+    }
+    // Try to enable statistics on load
+    enableStatistics(COOKIE_STORE.statistics.allow && COOKIE_STORE.statistics.value);
+    // Only open the cookie consent if there were no values set previously
+    if (setValues.length === 0) {
+        handleOpenCookieConsent();
+    } else {
+        // If there were some previous values, reset these cookies to
+        // extend their lifetime.
+        resetCookies();
+    }
+};
+
+
+/**
+ * Open the cookie consent if it isn't already opened.
+ */
+const handleOpenCookieConsent = () => {
+    const isOpen = OPEN_COOKIE_CONSENT.getAttribute('aria-expanded') === 'true';
+    if (!isOpen) {
+        OPEN_COOKIE_CONSENT.setAttribute('aria-expanded', true);
+        COOKIE_CONSENT.classList.add('visible');
+    }
+}
+
+
+/**
+ * Close the cookie consent and save its settings.
+ */
+const handleSaveCookieConsent = () => {
+    const isOpen = OPEN_COOKIE_CONSENT.getAttribute('aria-expanded') === 'true';
+    if (isOpen) {
+        OPEN_COOKIE_CONSENT.setAttribute('aria-expanded', false);
+        COOKIE_CONSENT.classList.remove('visible');
+        resetCookies();
+        enableStatistics(COOKIE_STORE.statistics.allow && COOKIE_STORE.statistics.value);
+    }
+};
+
+
+/**
+ * Refreshes data in the COOKIE_STORE if an input changes.
+ *
+ * @param {String} key - key to the cookie stores cookie object
+ *
+ * @returns {Function}
+ */
+const handleCookieChange = (key) => (e) => {
+    COOKIE_STORE[key].allow = e.target.checked;
+}
+
+
+// Add listeners for cookie consent events
+window.addEventListener('load', initCookieConsent);
+
+OPEN_COOKIE_CONSENT.addEventListener('click', handleOpenCookieConsent);
+CLOSE_COOKIE_CONSENT.addEventListener('click', handleSaveCookieConsent);
+
+for (const [key, cookie] of Object.entries(COOKIE_STORE)) {
+    const cookieNode = document.getElementById(cookie.nodeId);
+    cookieNode.addEventListener('change', handleCookieChange(key));
+}

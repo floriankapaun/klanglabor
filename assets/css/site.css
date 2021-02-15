@@ -142,7 +142,11 @@ blockquote footer {
 
 button {
     font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
     border: none;
+    cursor: pointer;
 }
 
 p + p { /* Paragraph spacing */
@@ -155,6 +159,10 @@ p + p { /* Paragraph spacing */
  */
 .caps {
     text-transform: uppercase;
+}
+
+.color-paper {
+    color: var(--paper);
 }
 
 .bg-paper {
@@ -178,6 +186,10 @@ p + p { /* Paragraph spacing */
     overflow: hidden;
     clip: rect(0,0,0,0);
     border: 0;
+}
+
+.disabled {
+    opacity: 0.65;
 }
 
 
@@ -207,7 +219,8 @@ p + p { /* Paragraph spacing */
 }
 
 .anchor-link:focus,
-.block:focus {
+.block:focus,
+.block label:focus {
     outline-offset: -5px;
 }
 
@@ -238,7 +251,9 @@ li.block {
 .block > ul,
 .block > ol,
 .block > pre,
-a.block {
+.block > label,
+a.block,
+#cookieConsentOpen {
     padding: 0.3rem 0.5rem;
 }
 
@@ -363,4 +378,48 @@ a.block {
     align-items: flex-start;
     flex-wrap: wrap;
     list-style: none;
+}
+
+#cookieConsent {
+    position: fixed;
+    bottom: 3rem;
+    left: -100%;
+    width: 100%;
+    transform: translateX(0);
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    animation: slide-in-from-left 0.15s ease-in-out 0s forwards;
+    z-index: 900;
+}
+
+#cookieConsent.visible {
+    display: flex;
+}
+
+#cookieDisclaimer {
+    max-width: 70ch;
+}
+
+.cookie-category_checkbox{
+    display: none;
+}
+
+input[type=checkbox].cookie-category_checkbox + label {
+    text-transform: lowercase;
+    padding-left: 1.5rem;
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjI0Ij48cGF0aCBmaWxsPSIjMTgxODE4IiBkPSJNMTkgNi40MUwxNy41OSA1IDEyIDEwLjU5IDYuNDEgNSA1IDYuNDEgMTAuNTkgMTIgNSAxNy41OSA2LjQxIDE5IDEyIDEzLjQxIDE3LjU5IDE5IDE5IDE3LjU5IDEzLjQxIDEyeiIvPjwvc3ZnPg==);
+    background-repeat: no-repeat;
+    background-size: auto 1.1rem;
+    background-position: 0.3rem 0.37rem;
+    cursor: pointer;
+}
+
+input[type=checkbox]:checked.cookie-category_checkbox + label {
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjI0Ij48cGF0aCBmaWxsPSIjMTgxODE4IiBkPSJNOSAxNi4yTDQuOCAxMmwtMS40IDEuNEw5IDE5IDIxIDdsLTEuNC0xLjRMOSAxNi4yeiIvPjwvc3ZnPg==);
+}
+
+@keyframes slide-in-from-left {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(100%); }
 }

@@ -64,6 +64,25 @@ return function ($site, $page) {
     $minLineWidth = $site->minLineWidth()->toFloat();
     $maxLineWidth = $site->maxLineWidth()->toFloat();
 
+    $statisticalCookieAllow = isset($_COOKIE['STATISTICAL_COOKIES_ALLOWED']) 
+        ? $_COOKIE['STATISTICAL_COOKIES_ALLOWED'] === 'true'
+        : null;
+
+    $cookieStore = json_encode([
+        'necessary' => [
+            'name' => 'NECESSARY_COOKIES_ALLOWED',
+            'allow' => true,
+            'nodeId' => 'cookie-category_necessary',
+            'value' => null,
+        ],
+        'statistics' => [
+            'name' => 'STATISTICAL_COOKIES_ALLOWED',
+            'allow' => $statisticalCookieAllow,
+            'nodeId' => 'cookie-category_statistics',
+            'value' => null,
+        ],
+    ]);
+
     return [
         'titleTag' => $titleTag,
         'navHTML' => $navHTML,
@@ -75,6 +94,7 @@ return function ($site, $page) {
         'sineHeight' => getRandom($minSineHeight, $maxSineHeight, 1000),
         'tension' => getRandom($minTension, $maxTension, 1000),
         'distortionInterval' => getRandom($minDistortionInterval, $maxDistortionInterval),
-        'lineWidth' => getRandom($minLineWidth, $maxLineWidth)
+        'lineWidth' => getRandom($minLineWidth, $maxLineWidth),
+        'cookieStore' => $cookieStore,
     ];
 };
