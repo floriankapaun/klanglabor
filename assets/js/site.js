@@ -166,11 +166,24 @@ const BG = document.body;
 const CANVAS = document.createElement('CANVAS');
 const CTX = CANVAS.getContext('2d');
 const PIXEL_RATIO = window.devicePixelRatio || 1;
+const LINE_WIDTH = CONFIG.lineWidth || 2;
+const COLOR = CONFIG.color || '#000';
+
+let PATTERN_WORKER = undefined;
 
 CANVAS.width = window.innerWidth * PIXEL_RATIO;
 CANVAS.height = window.innerHeight * PIXEL_RATIO;
 
 CONFIG.startY = 500;
+
+if (window.Worker) {
+    PATTERN_WORKER = new Worker('assets/js/pattern-worker.js');
+    PATTERN_WORKER.onmessage = (e) => {
+        // Set returned img url as background
+        BG.style.backgroundImage = `url(${e.data})`;
+    };
+}
+
 
 /**
  * Returns a random Integer between min and max.
@@ -302,10 +315,9 @@ const drawPolyLine = (context, points) => {
 
 
 /**
- * Generates a wave line and draws it on a context.
+ * Generates a wave line and returns its points.
  *
  * @param {HTMLElement} canvas - The canvas to draw on
- * @param {Object} context - The 2d context of the canvas
  * @param {Number} numberOfPoints - Number of points defining the wave line
  * @param {Number} startY - Starting y-coordinate of the first point
  * @param {Number} sineWidth - Determines width of one sine wave
@@ -313,19 +325,15 @@ const drawPolyLine = (context, points) => {
  * @param {Number} distortionInterval - Determines the max distortion of a points y coordinate
  * @param {Number} tension - How tense the line wraps around the points
  * @param {Number} numberOfSegments - Defines the amount of interpolation between two points
- * @param {Number} lineWidth - Width of the wave lines
- * @param {String} color - Color value for the wave lines
+ *
+ * @returns {Array} - points
  */
-const generateWave = (canvas, context, numberOfPoints, startY, sineWidth, sineHeight, distortionInterval, tension = 0.5, numberOfSegments = 16, lineWidth = 2, color = '#000') => {
+const generateWave = (canvas, numberOfPoints, startY, sineWidth, sineHeight, distortionInterval, tension = 0.5, numberOfSegments = 16) => {
     const sinePoints = getSinePoints(canvas, numberOfPoints, startY, sineWidth, sineHeight);
     const points = distortPoints(sinePoints, distortionInterval);
     // Get interpolations between the points to smooth out the wave
     const interpolatedPoints = getInterpolatedPoints(points, tension, numberOfSegments);
-    context.beginPath();
-    drawPolyLine(context, interpolatedPoints);
-    context.strokeStyle = color;
-    context.lineWidth = lineWidth;
-    context.stroke();
+    return interpolatedPoints;
 };
 
 
@@ -335,14 +343,40 @@ const generateWave = (canvas, context, numberOfPoints, startY, sineWidth, sineHe
 const draw = () => {
     // Clear canvas before drawing something
     CTX.clearRect(0, 0, CANVAS.width, CANVAS.height);
-    const stepSize = (CANVAS.height + 500) / CONFIG.numberOfLines;
-    for (let i = 0; i < CONFIG.numberOfLines; i++) {
-        CONFIG.startY = i * stepSize - 500;
-        generateWave(CANVAS, CTX, CONFIG.numberOfPoints, CONFIG.startY, CONFIG.sineWidth, CONFIG.sineHeight, CONFIG.distortionInterval, CONFIG.tension, CONFIG.numberOfSegments, CONFIG.lineWidth);
+    // Try to outsource the calculations to a webworker
+    if (PATTERN_WORKER) {
+        PATTERN_WORKER.postMessage({
+            canvasWidth: CANVAS.width,
+            canvasHeight: CANVAS.height,
+            numberOfPoints: CONFIG.numberOfPoints,
+            numberOfLines: CONFIG.numberOfLines,
+            startY: CONFIG.startY,
+            sineWidth: CONFIG.sineWidth,
+            sineHeight: CONFIG.sineHeight,
+            distortionInterval: CONFIG.distortionInterval,
+            tension: CONFIG.tension,
+            numberOfSegments: CONFIG.numberOfSegments,
+            lineWidth: LINE_WIDTH,
+            color: COLOR,
+        });
+    } else {
+        const stepSize = (CANVAS.height + 500) / CONFIG.numberOfLines;
+        // Generate each line
+        for (let i = 0; i < CONFIG.numberOfLines; i++) {
+            CONFIG.startY = i * stepSize - 500;
+            // Generate the waves points
+            const wave = generateWave(CANVAS, CONFIG.numberOfPoints, CONFIG.startY, CONFIG.sineWidth, CONFIG.sineHeight, CONFIG.distortionInterval, CONFIG.tension, CONFIG.numberOfSegments);
+            // Draw the wave
+            CTX.beginPath();
+            drawPolyLine(CTX, wave);
+            CTX.strokeStyle = COLOR;
+            CTX.lineWidth = LINE_WIDTH;
+            CTX.stroke();
+        }
+        // Convert the canvas content to an base64 url and apply it as background-image
+        const url = CANVAS.toDataURL('image/png');
+        BG.style.backgroundImage = `url(${url})`;
     }
-    // Convert the canvas content to an base64 url and apply it as background-image
-    const url = CANVAS.toDataURL('image/png');
-    BG.style.backgroundImage = `url(${url})`;
 }
 
 
