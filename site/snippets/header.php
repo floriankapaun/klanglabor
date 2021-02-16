@@ -8,6 +8,12 @@
     <link rel="shortcut icon" href="<?= asset('assets/img/favicon.ico')->url() ?>" type="image/icon type">
     <!-- Load CSS inline because it is super tiny -->
     <style><?= require 'assets/css/site.css' ?></style>
+    <!-- Overwrite style with $site settings -->
+    <style>
+        :root {
+            --highlight: <?= $site->highlightColor() ?>;
+        }
+    </style>
 </head>
 <body>
     <header>

@@ -174,3 +174,17 @@ tabs:
                 max: 100
                 step: .01
                 required: true
+
+    # site-wide settings tab
+    config:
+        label: Einstellungen
+        icon: settings
+        fields:
+            highlightColor:
+                label: Auszeichnungsfarbe
+                type: text
+                help: 'Die Farbe wird als Hexadezimal-Wert definiert. Beispiel: "#000" oder "#FF0000".'
+                pattern: '^(#)([[:xdigit:]]{6}|[[:xdigit:]]{3})$'
+                placeholder: '#FF9B00'
+                required: true
+                width: 1/2

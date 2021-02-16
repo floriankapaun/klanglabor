@@ -2,6 +2,10 @@ Title: Klanglabor
 
 ----
 
+Highlightcolor: #FF9B00
+
+----
+
 Minnumberoflines: 50
 
 ----
