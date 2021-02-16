@@ -177,7 +177,7 @@ CANVAS.height = window.innerHeight * PIXEL_RATIO;
 CONFIG.startY = 500;
 
 if (window.Worker) {
-    PATTERN_WORKER = new Worker('assets/js/pattern-worker.js');
+    PATTERN_WORKER = new Worker('/assets/js/pattern-worker.js');
     PATTERN_WORKER.onmessage = (e) => {
         // Set returned img url as background
         BG.style.backgroundImage = `url(${e.data})`;
