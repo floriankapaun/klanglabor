@@ -308,6 +308,7 @@ a.block,
 
 #search-input {
     max-width: 100%;
+    border-radius: 0;
 }
 
 #search-input::-webkit-search-cancel-button{
