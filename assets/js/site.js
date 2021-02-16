@@ -358,6 +358,7 @@ draw();
 const COOKIE_CONSENT = document.getElementById('cookieConsent');
 const OPEN_COOKIE_CONSENT = document.getElementById('cookieConsentOpen');
 const CLOSE_COOKIE_CONSENT = document.getElementById('cookieConsentClose');
+const STATISTICS_SCRIPT_ID = 'MATOMO_STATS_SCRIPT';
 
 
 /**
@@ -417,9 +418,38 @@ const resetCookies = () => {
  */
 const enableStatistics = (boolean) => {
     if (boolean) {
-        console.log('enabled stats');
+        // const script = document.getElementById(STATISTICS_SCRIPT_ID);
+        // if (!script) {
+        //     let _paq = null;
+        //     if (!window._paq) window._paq = [];
+        //     _paq = window._paq;
+        //     _paq.push(['setDocumentTitle', `${document.domain} // ${document.title}`]);
+        //     _paq.push(['setDomains', ['*.klanglabor.hs-augsburg.de']]);
+        //     _paq.push(["setDoNotTrack", true]);
+        //     _paq.push(['trackPageView']);
+        //     _paq.push(['enableLinkTracking']);
+        //     _paq.push(['enableHeartBeatTimer']);
+        //     (() => {
+        //         const u = 'https://matomo.hs-augsburg.de/';
+        //         _paq.push(['setTrackerUrl', `${u}matomo.php`]);
+        //         _paq.push(['setSiteId', '2']);
+        //         const d = document;
+        //         const g = d.createElement('script');
+        //         g.id = STATISTICS_SCRIPT_ID;
+        //         const s = d.getElementsByTagName('script')[0];
+        //         g.type = 'text/javascript';
+        //         g.async = true;
+        //         g.defer = true;
+        //         g.src = `${u}matomo.js`;
+        //         s.parentNode.insertBefore(g, s);
+        //     })();
+        // }
     } else {
-        console.log('disabled stats');
+        // if (window._paq) delete window._paq;
+        // (() => {
+        //     const script = document.getElementById(STATISTICS_SCRIPT_ID);
+        //     if (script) script.remove();
+        // })();
     }
 };
 
