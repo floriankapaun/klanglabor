@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php e($page->isUnlisted() && !$page->isHomePage(), '<meta name="robots" content="noindex">'); ?>
+    <meta name="description" content="Klanglabor der HS Augsburg \ Experimentelles Audiostudio \ Analoge Klangsynthese \ Vielfältige künstlerische Möglichkeiten \ Jetzt reinschauen!">
     <title><?php e($page->isHomePage(), $page->title()->html(), $titleTag) ?></title>
     <link rel="shortcut icon" href="<?= asset('assets/img/favicon.ico')->url() ?>" type="image/icon type">
     <!-- Load CSS inline because it is super tiny -->

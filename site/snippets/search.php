@@ -1,4 +1,5 @@
 <section id="search">
+    <label for="search-input" class="sr-only">Suchfunktion</label>
     <input
         id="search-input"
         class="block block-xl caps"
