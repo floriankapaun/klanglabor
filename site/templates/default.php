@@ -9,7 +9,6 @@
         </section>
     </article>
     <?php snippet('body', ['field' => $page->layout()])  ?>
-    <?php snippet('cookieConsent') ?>
 </main>
 
 <?php snippet('footer') ?>

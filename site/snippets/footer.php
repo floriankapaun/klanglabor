@@ -1,8 +1,5 @@
     <footer>
         <a class="block" href="/impressum">Impressum</a>
-        <button aria-expanded="false" aria-label="Open Cookie Consent" id="cookieConsentOpen" class="block" type="button">
-            Cookie Einstellungen
-        </button>
         <a class="block" href="https://www.hs-augsburg.de/Service/Datenschutz.html" target="_blank" rel="noreferrer">Datenschutz</a>
         <!-- Config variables -->
         <script type="text/javascript">
@@ -21,7 +18,6 @@
                 distortionInterval: <?= $distortionInterval ?>,
                 lineWidth: <?= $lineWidth ?>,
             };
-            const COOKIE_STORE = <?= $cookieStore ?>;
         </script>
         <!-- Load global JavaScript inline because it is super tiny -->
         <script type="text/javascript" async defer><?= require 'assets/js/site.js' ?></script>
