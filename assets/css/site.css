@@ -308,10 +308,15 @@ a.block {
 #search-input {
     max-width: 100%;
     border-radius: 0;
+    -webkit-appearance: none !important;
 }
 
 #search-input::-webkit-search-cancel-button{
     -webkit-appearance: none;
+}
+
+#search-input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    white-space: nowrap;
 }
 
 #search-results {
