@@ -168,6 +168,7 @@ const PIXEL_RATIO = window.devicePixelRatio || 1;
 const LINE_WIDTH = CONFIG.lineWidth || 2;
 const COLOR = CONFIG.color || '#000';
 const IS_MOBILE = window.innerWidth <= 800;
+const OFFSCREEN_CANVAS_SUPPORT = typeof OffscreenCanvas !== 'undefined';
 
 let PATTERN_WORKER = undefined;
 
@@ -176,7 +177,7 @@ CANVAS.height = window.innerHeight * PIXEL_RATIO;
 
 CONFIG.startY = 500;
 
-if (window.Worker && IS_MOBILE) {
+if (window.Worker && IS_MOBILE && OFFSCREEN_CANVAS_SUPPORT) {
     PATTERN_WORKER = new Worker('/assets/js/pattern-worker.js');
     PATTERN_WORKER.onmessage = (e) => {
         // Set returned img url as background
@@ -344,7 +345,7 @@ const draw = () => {
     // Clear canvas before drawing something
     CTX.clearRect(0, 0, CANVAS.width, CANVAS.height);
     // Try to outsource the calculations to a webworker
-    if (PATTERN_WORKER && IS_MOBILE) {
+    if (PATTERN_WORKER && IS_MOBILE && OFFSCREEN_CANVAS_SUPPORT) {
         PATTERN_WORKER.postMessage({
             canvasWidth: CANVAS.width,
             canvasHeight: CANVAS.height,
