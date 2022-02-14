@@ -110,15 +110,18 @@ const search = (query) => {
 /**
  * Handles the search querying and response.
  */
+let searchPromise = undefined;
 const handleSearchInput = async () => {
     const query = encodeURIComponent(INPUT.value);
     // If no query, clear output
     if (query === '') {
+        if (searchPromise) await searchPromise;
         OUTPUT.innerHTML = '';
         return false;
     };
     // Else, fetch search results
-    const response = await search(query);
+    searchPromise = search(query);
+    const response = await searchPromise;
     // Handle errors
     if (response.status && response.status === 'error') {
         OUTPUT.innerHTML = '';
