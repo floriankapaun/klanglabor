@@ -224,11 +224,6 @@ p + p { /* Paragraph spacing */
     outline-offset: -5px;
 }
 
-.block.active {
-    color: var(--paper);
-    background-color: var(--highlight);
-}
-
 .block-xl {
     font-size: var(--font_size-xl);
     font-weight: var(--font_weight-xl);

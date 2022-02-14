@@ -38,7 +38,6 @@ const handleNavInteraction = (e, parent = e.target.parentNode, query = '.nav-sec
         if (triggerElement !== NAV_TOGGLE) {
             for (const trigger of parent.parentNode.querySelectorAll('.nav-link')) {
                 trigger.setAttribute('aria-expanded', false);
-                trigger.classList.remove('active');
             }
             for (const nav of parent.parentNode.querySelectorAll(query)) {
                 nav.classList.remove('expanded');
@@ -47,11 +46,9 @@ const handleNavInteraction = (e, parent = e.target.parentNode, query = '.nav-sec
         // Toggle the trigger elements subnav
         if (isExpanded) {
             triggerElement.setAttribute('aria-expanded', false);
-            triggerElement.classList.remove('active');
             subNav.classList.remove('expanded');
         } else {
             triggerElement.setAttribute('aria-expanded', true);
-            triggerElement.classList.add('active');
             subNav.classList.add('expanded');
         }
 
@@ -74,7 +71,6 @@ document.addEventListener('keydown', (e) => {
     const isEscape = 'key' in e ? (e.key === 'Escape' || e.key === 'Esc') : e.keyCode === 27;
     if (isEscape) {
         NAV_TOGGLE.setAttribute('aria-expanded', false);
-        NAV_TOGGLE.classList.remove('active');
         NAV.querySelector('.nav-section').classList.remove('expanded');
         NAV_TOGGLE.focus();
     }
