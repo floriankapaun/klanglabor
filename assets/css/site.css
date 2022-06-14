@@ -338,9 +338,14 @@ a.block {
     list-style: none;
 }
 
+.nav-section.main-level {
+    position: relative;
+}
+
+.nav-section.main-level,
 .nav-section.expanded {
     display: flex;
- }
+}
 
 .nav-section .nav-section {
     position: absolute;

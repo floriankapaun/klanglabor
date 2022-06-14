@@ -1,5 +1,6 @@
 <?php
-function getRandom($min = 0, $max = 1, $mul = 1) {
+function getRandom($min = 0, $max = 1, $mul = 1)
+{
     if ($max < $min) {
         return mt_rand($max * $mul, $min * $mul) / $mul;
     } else {
@@ -7,17 +8,19 @@ function getRandom($min = 0, $max = 1, $mul = 1) {
     }
 }
 
-function getLinkHTML($item, $hasPopup) {
-    return '<a ' . ($item->isOpen() ? 'aria-current' : null) . ($hasPopup ? 'aria-expanded="false"' : null) . ' href="' . $item->url() . '" class=" block block-xl nav-link">' . $item->title()->html() . '</a>';
+function getLinkHTML($item, $hasPopup, $mainLevel)
+{
+    return '<a ' . ($item->isOpen() ? 'aria-current' : null) . ($hasPopup ? 'aria-expanded="false"' : null) . ' href="' . $item->url() . '" class="block block-xl nav-link' . ($mainLevel ? ' nav-toogle' : null) . '">' . $item->title()->html() . '</a>';
 }
 
-function getNavHTML($item) {
-    $nav = '<ul class="nav-section">';
-    foreach($item->children->listed() as $child) {
+function getNavHTML($item, $mainLevel = true)
+{
+    $nav = '<ul class="nav-section' . ($mainLevel ? ' main-level' : null) . '">';
+    foreach ($item->children->listed() as $child) {
         $hasPopup = sizeof($child->children()->listed()) > 0;
-        $nav .= '<li class="nav-item">' . getLinkHTML($child, $hasPopup);
+        $nav .= '<li class="nav-item">' . getLinkHTML($child, $hasPopup, $mainLevel);
         if ($hasPopup) {
-            $res = getNavHTML($child);
+            $res = getNavHTML($child, false);
             $nav .= $res;
         }
         $nav .= '</li>';
@@ -26,9 +29,10 @@ function getNavHTML($item) {
     return $nav;
 }
 
-function getNavDepth($item) {
+function getNavDepth($item)
+{
     $maxDepth = 1;
-    foreach($item->children->listed() as $child) {
+    foreach ($item->children->listed() as $child) {
         $hasChildren = sizeof($child->children()->listed()) > 0;
         if ($hasChildren) {
             $depth = getNavDepth($child) + 1;
@@ -43,7 +47,7 @@ function getNavDepth($item) {
 
 return function ($site, $page) {
     $titleTag = $page->title() . ' \ ' . $site->title();
-    
+
     $navHTML = getNavHTML($site);
     $navDepth = getNavDepth($site);
 
